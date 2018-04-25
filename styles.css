@@ -35,6 +35,10 @@ body {
     color: var(--black);
 }
 
+.red {
+    color: var(--red);
+}
+
 input:focus {
 	outline: none;
 }
@@ -65,7 +69,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* ================================================================================== */
 .container {
-    margin: calc(50vh - 200px) auto 0;
+    margin: calc(50vh - 200px) auto 50px;
     background-color: #fff;
     width: 80vw;
     max-width: 900px;
@@ -164,18 +168,70 @@ input.submit:hover {
     box-shadow: 0 10px 20px rgba(62, 71, 79, .15);
 }
 
-.note:link,
-.note:visited {
+.note,
+.note,
+.terms-label {
     font-size: 16px;
     display: inline-block;
     text-decoration: none;
     color: var(--grey-3);
     padding: 2px 10px;
     margin-top: 5px;
-    transition: color .2s ease-out;
+    transition: all .2s ease-out;
 }
 
-.note:hover,
-.note:active {
+.terms-label:hover {
     color: var(--red);
+    cursor: pointer;
+}
+
+.terms {
+    text-align: right;
+    color: var(--grey-3);
+    line-height: 36px;
+    margin: 0 5%;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .5s ease-out, opacity .5s ease-out;
+}
+
+.terms ul {
+    margin: 2% 5%;
+    list-style: none;
+}
+
+.terms li::before {
+    content: '• ';
+    color: var(--blue);
+    font-size: 36px;
+    vertical-align: sub;
+}
+
+.terms span {
+    font-size: 21px;
+}
+
+#terms {
+    display: none;
+}
+
+#terms:checked + .terms-label {
+    border-top: 1px solid var(--grey-2);
+    font-size: 36px;
+    display: block;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: var(--blue);
+}
+
+#terms:checked ~ .terms {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.disclaimer {
+    text-align: center;
+    border-top: 1px solid var(--grey-2);
+    padding-top: 20px;
+    margin-top: 30px;
 }
