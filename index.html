@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -14,16 +14,16 @@
     <main class="container">
         <section class="wrapper input">
             <h1 class="title">أحسبها لك؟</h1>
-            <form action="" class="form">
+            <form action="" class="form" id="form">
                 <fieldset>
                     <label for="withdrawn" class="label">اشتريت بكام؟</label>
-                    <input type="number" class="withdrawn" id="withdrawn" min="200" max="20000" placeholder="جنيه" required>
+                    <input type="number" class="withdrawn" id="withdrawn" min="200" max="20000" placeholder="جنيه"  autocomplete="off" required>
                     <span class="note">معاك من 200 ل 20،000 جنيه</span>
                 </fieldset>
             
                 <fieldset>
                     <label for="monthly-payment" class="label">وهتدفع قد أيه كل شهر؟</label>
-                    <input type="number" class="monthly-payment" id="monthly-payment" min="10" max="1000" step="10" placeholder="جنيه" required>
+                    <input type="number" class="monthly-payment" id="monthly-payment" min="10" max="1000" step="10" placeholder="جنيه"  autocomplete="off" required>
                     <span class="note">أقل حاجة 5%، وخليها مضاعفات 10</span>
                 </fieldset>
             
@@ -53,8 +53,8 @@
 
         <section class="wrapper result">
             <h1 class="title">حسبتها لك</h1>
-            <p>المفروض هتدفع ( <span class="red">6</span> ) أقساط &times; ( <span class="red">350</span> ) جنيه &plus; (
-            <span class="red">174</span> ) جنيه آخر قسط.</p>
+            <p>المفروض هتدفع ( <span class="red" id="period">6</span> ) أقساط &times; ( <span class="red" id="installment">350</span> ) جنيه<span id="if-last"> &plus; (
+            <span class="red" id="last-installment">174</span> ) جنيه آخر قسط</span>.</p>
             <p>إجمالي الفايدة (
             <span class="red">4.7%</span> ) يعني حوالي (
             <span class="red">187</span> ) جنيه.</p>
