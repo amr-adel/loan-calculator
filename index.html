@@ -23,7 +23,7 @@
             
                 <fieldset>
                     <label for="monthly-payment" class="label">وهتدفع قد أيه كل شهر؟</label>
-                    <input type="number" class="monthly-payment" id="monthly-payment" min="10" max="1000" step="10" placeholder="جنيه"  autocomplete="off" required>
+                    <input type="number" class="monthly-payment" id="monthly-payment" min="10" max="10000" step="10" placeholder="جنيه"  autocomplete="off" required>
                     <span class="note">أقل حاجة 5%، وخليها مضاعفات 10</span>
                 </fieldset>
             
@@ -53,13 +53,13 @@
 
         <section class="wrapper result">
             <h1 class="title">حسبتها لك</h1>
-            <p>المفروض هتدفع ( <span class="red" id="period">6</span> ) أقساط &times; ( <span class="red" id="installment">350</span> ) جنيه<span id="if-last"> &plus; (
+            <p>المفروض هتدفع ( <span class="red" id="period">6</span> ) قسط &times; ( <span class="red" id="installment">350</span> ) جنيه<span id="if-last"> &plus; (
             <span class="red" id="last-installment">174</span> ) جنيه آخر قسط</span>.</p>
             <p>إجمالي الفايدة (
-            <span class="red">4.7%</span> ) يعني حوالي (
-            <span class="red">187</span> ) جنيه.</p>
+            <span class="red" id="total-interest">4.7%</span> ) يعني حوالي (
+            <span class="red" id="difference">187</span> ) جنيه زيادة.</p>
             <p>إجمالي اللي هتدفعه (
-            <span class="red">2274</span> ) جنيه.</p>
+            <span class="red" id="total-payment">2274</span> ) جنيه.</p>
         </section>
     </main>
 

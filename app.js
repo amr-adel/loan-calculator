@@ -1,4 +1,4 @@
-const variables = {
+const dom = {
     transaction: document.getElementById("withdrawn"),
     installment: document.getElementById("monthly-payment"),
     form: document.getElementById("form"),
@@ -6,6 +6,9 @@ const variables = {
     resultInstallment: document.getElementById("installment"),
     resultLastInstallment: document.getElementById("last-installment"),
     ifLast: document.getElementById("if-last"),
+    resultTotalInterest: document.getElementById("total-interest"),
+    resultDifference: document.getElementById("difference"),
+    resultTotalPayment: document.getElementById("total-payment")
 };
 
 
@@ -16,8 +19,8 @@ const model = {
     minInstallment: 0,
     lastInstallment: 0,
     period: 0,
+    
     monthlyInterest: 2.2,
-    totalInterest: 0,
 
     init: function () {
         this.transaction = 0;
@@ -26,37 +29,38 @@ const model = {
         this.minInstallment = 0;
         this.lastInstallment = 0;
         this.period = 0;
-        this.monthlyInterest = 0;
-        this.totalInterest = 0;
     }
 };
 
 
 const view = {
     renderSuggest: function(min) {
-        if (variables.installment.value < min) {
-            variables.installment.value = min;
+        if (dom.installment.value < min) {
+            dom.installment.value = min;
         }
-        variables.installment.min = min;
+        dom.installment.min = min;
     },
     init: function() {
-        variables.transaction.addEventListener("change", function(e) {
+        dom.transaction.addEventListener("change", function(e) {
             controller.suggest(e.target.value);
         });
-        variables.form.addEventListener("submit", function(e) {
+        dom.form.addEventListener("submit", function(e) {
             e.preventDefault();
             controller.calculate();
         });
     },
-    renderResult: function(period, installment, lastInstallment) {
-        variables.resultPeriod.innerHTML = period;
-        variables.resultInstallment.innerHTML = installment;
-        if (lastInstallment === 0) {
-            variables.ifLast.style.display = "none";
+    render: function (result) {
+        dom.resultPeriod.innerHTML = result.period;
+        dom.resultInstallment.innerHTML = result.installment;
+        if (result.lastInstallment === 0) {
+            dom.ifLast.style.display = "none";
         } else {
-            variables.resultLastInstallment.innerHTML = lastInstallment;
-            variables.ifLast.style.display = "inline";
+            dom.resultLastInstallment.innerHTML = result.lastInstallment;
+            dom.ifLast.style.display = "inline";
         }
+        dom.resultTotalInterest.innerHTML = result.totalInterest() + "%";
+        dom.resultDifference.innerHTML = result.difference();
+        dom.resultTotalPayment.innerHTML = result.totalPayments;
         controller.modelReset();
     }
 };
@@ -69,34 +73,42 @@ const controller = {
 
     },
     calculate: function() {
-        model.transaction = variables.transaction.value;
-        model.installment = variables.installment.value;
+        model.transaction = dom.transaction.value;
+        model.installment = dom.installment.value;
         model.debt = model.transaction;
 
-        console.log('calculate....');
-        
         while (model.debt !== 'paid') {
             if (Number(model.debt) == Number(model.installment)) {
-                // console.log(model.debt +' = '+ model.installment);
                 model.period++;
-                console.log(model.debt);
                 model.debt = "paid";
             } else if (Number(model.debt) > Number(model.installment)) {
-                // console.log(model.debt + " > " + model.installment);
                 model.debt -= model.installment;
-                console.log(model.debt);
                 model.period++;
+                if (model.period >= 2) {
+                    model.debt += Number((model.debt * (model.monthlyInterest / 100)).toFixed(2));
+                }
             } else if (Number(model.debt) < Number(model.installment)) {
-                // console.log(model.debt + " < " + model.installment);
-                model.lastInstallment = model.debt;
-                console.log('last: ' + model.lastInstallment);
+                model.lastInstallment = (model.debt).toFixed(0);
                 model.debt = "paid";
             }
         }
 
-        view.renderResult(model.period, model.installment, model.lastInstallment);
+        view.render(this.result());
 
-        console.log('Done');
+    },
+    result: function () {
+        return {
+            period: model.period,
+            installment: model.installment,
+            lastInstallment: model.lastInstallment,
+            totalInterest: function () {
+                return (this.totalPayments / (model.transaction / 100) - 100).toFixed(2);
+            },
+            difference: function () {
+                return this.totalPayments - model.transaction;
+            },
+            totalPayments: model.period * model.installment + Number(model.lastInstallment)
+        }
     },
     modelReset: function () {
         model.init();
