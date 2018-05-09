@@ -1,6 +1,6 @@
 :root {
-    --red: #c25975;
-    --green: #5fcf80;
+    --red: #ff7675;
+    --green: #00cec9;
     
     --grey-1: #f9fafa;
     --grey-2: #edeff0;
@@ -9,7 +9,8 @@
     
     --black: #384047;
     
-    --blue: #39add1;
+    --prim: #ff7675;
+    --scnd: #7b81d2;
 }
 
 * {
@@ -25,7 +26,8 @@
 
 html {
     box-sizing: border-box;
-    background: var(--grey-2) url(sayagata-400px.png);
+    background-image: linear-gradient(to right bottom, #7b81d2, #3f47b9);
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -35,8 +37,8 @@ body {
     color: var(--black);
 }
 
-.red {
-    color: var(--red);
+.number {
+    color: var(--prim);
 }
 
 input:focus {
@@ -51,6 +53,28 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+:invalid {
+  box-shadow: none;
+}
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+::-moz-selection {
+    background-color: var(--scnd);
+    color: var(--grey-2);
+}
+
+::selection {
+    background-color: var(--scnd);
+    color: var(--grey-2);
 }
 
 /* From: (https://css-tricks.com/almanac/selectors/p/placeholder/) */
@@ -68,20 +92,35 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* ================================================================================== */
+
+.center.container {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -60%);
+}
+
+.initial .result {
+    display: none;
+}
+
 .container {
-    margin: 10vh auto 0;
+    margin: 10vh auto 20px;
     width: 80vw;
     max-width: 900px;
 }
 
 .wrapper {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(62, 71, 79, .15);
-    border-top: 10px solid var(--blue);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+    border-top: 10px solid var(--prim);
     border-bottom: 10px solid var(--grey-2);
-    margin-bottom: 50px;
+}
+
+.wrapper:not(:first-child) {
+    margin-top: 50px;
 }
 
 .title {
@@ -128,7 +167,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 48px;
     font-weight: bold;
     margin: 10px auto;
-    border-radius: 50px;
+    border-radius: 3px;
     font-size: 24px;
     text-align: center;
     border: 2px solid var(--grey-2);
@@ -149,19 +188,20 @@ input[type=number]::-webkit-outer-spin-button {
 .withdrawn:invalid,
 .monthly-payment:invalid {
     border: 2px solid var(--red);
+    outline: none;
     color: var(--red);
 }
 
 .withdrawn:focus,
 .monthly-payment:focus {
-    box-shadow: 0 10px 20px rgba(62, 71, 79, .15);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, .1);
 }
 
 input.submit {
     font-family: inherit;
     font-weight: 400;
     color: var(--grey-2);
-    background-color: var(--blue);
+    background-color: var(--prim);
     border: none;
     transition: all .2s ease-out;
     cursor: pointer;
@@ -169,8 +209,8 @@ input.submit {
 
 input.submit:hover {
     color: var(--grey-1);
-    background-color: #55b8d7;
-    box-shadow: 0 10px 20px rgba(62, 71, 79, .15);
+    background-color: #ff6564;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
 }
 
 .note,
@@ -205,15 +245,24 @@ input.submit:hover {
     list-style: none;
 }
 
+.terms li {
+    position: relative;
+}
+
 .terms li::before {
-    content: '• ';
-    color: var(--blue);
+    content: '•';
+    color: var(--scnd);
     font-size: 36px;
-    vertical-align: sub;
+    position: absolute;
+    right: -20px;
 }
 
 .terms span {
     font-size: 21px;
+}
+
+.terms .number:last-child {
+    color: var(--scnd);
 }
 
 #terms {
@@ -226,7 +275,7 @@ input.submit:hover {
     display: block;
     margin-top: 30px;
     padding-top: 20px;
-    color: var(--blue);
+    color: var(--scnd);
 }
 
 #terms:checked ~ .terms {
@@ -251,4 +300,61 @@ input.submit:hover {
 
 #if-last {
     display: none;
+}
+
+/* ================================================================================== */
+
+.footer__follow {
+    text-align: center;
+    cursor: default;
+    margin-top: 20px;
+}
+
+.footer__follow a {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    font-size: 20px;
+    fill: var(--grey-1);
+    margin: 7px;
+    transition: fill .2s ease-out;
+}
+
+.footer__follow a:last-child {
+    width: 24px;
+    margin-left: 2px;
+}
+
+.footer__follow a:hover {
+    fill: var(--prim);;
+}
+
+/* ================================================================================== */
+
+@media screen and (max-width: 414px) {
+    .center.container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: translate(0, 0);
+    }
+
+    .container {
+        margin: 5vw;
+        width: 90vw;
+    }
+
+    .form fieldset {
+        float: none;
+        width: 80%;
+        border: none;
+        margin: 20px auto;
+        padding-bottom: 20px;
+    }
+
+    .form fieldset:first-child {
+        border-left: none;
+        border-bottom: 2px solid var(--grey-2);
+    }
+
 }

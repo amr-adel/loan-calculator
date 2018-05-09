@@ -8,7 +8,9 @@ const dom = {
     ifLast: document.getElementById("if-last"),
     resultTotalInterest: document.getElementById("total-interest"),
     resultDifference: document.getElementById("difference"),
-    resultTotalPayment: document.getElementById("total-payment")
+    resultTotalPayment: document.getElementById("total-payment"),
+    terms: document.getElementById('terms'),
+    body: document.querySelector('main')
 };
 
 
@@ -41,14 +43,23 @@ const view = {
         dom.installment.min = min;
     },
     init: function() {
-        dom.transaction.addEventListener("change", function(e) {
+        dom.transaction.addEventListener('change', function(e) {
             controller.suggest(e.target.value);
         });
-        dom.form.addEventListener("submit", function(e) {
+        dom.form.addEventListener('submit', function(e) {
             e.preventDefault();
             controller.calculate();
+            dom.body.classList.remove('initial', 'center');
+            view.result = true;
+        });
+        dom.terms.addEventListener('change', function () {
+            console.log(view.result);
+            if (!view.result) {
+                dom.terms.checked ? dom.body.classList.remove("center") : dom.body.classList.add("center");
+            }
         });
     },
+    result: false,
     render: function (result) {
         dom.resultPeriod.innerHTML = result.period;
         dom.resultInstallment.innerHTML = result.installment;
