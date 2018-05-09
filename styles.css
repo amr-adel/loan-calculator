@@ -29,10 +29,12 @@ html {
     background-image: linear-gradient(to right bottom, #7b81d2, #3f47b9);
     background-attachment: fixed;
     min-height: 100vh;
+    font-size: 62.5%;
 }
 
 body {
     font-family: 'Tajawal', sans-serif;
+    font-size: 1.6rem;
     text-align: center;
     color: var(--black);
 }
@@ -105,32 +107,32 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .container {
-    margin: 10vh auto 20px;
+    margin: 10vh auto 2rem;
     width: 80vw;
-    max-width: 900px;
+    max-width: 90rem;
 }
 
 .wrapper {
     background-color: #fff;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
-    border-top: 10px solid var(--prim);
-    border-bottom: 10px solid var(--grey-2);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .3);
+    border-top: 1rem solid var(--prim);
+    border-bottom: 1rem solid var(--grey-2);
 }
 
 .wrapper:not(:first-child) {
-    margin-top: 50px;
+    margin-top: 5rem;
 }
 
 .title {
     color: var(--grey-3);
     background-color: var(--grey-1);
     font-weight: 400;
-    height: 86px;
-    line-height: 86px;
+    height: 8rem;
+    line-height: 8rem;
     border-bottom: 1px solid var(--grey-2);
-    font-size: 36px;
+    font-size: 3.6rem;
 }
 
 .form {
@@ -141,7 +143,7 @@ input[type=number]::-webkit-outer-spin-button {
     float: right;
     width: 50%;
     border: none;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
 }
 
 .form fieldset:first-child {
@@ -151,24 +153,24 @@ input[type=number]::-webkit-outer-spin-button {
 .label {
     display: block;
     color: var(--grey-4);
-    font-size: 20px;
-    padding: 10px 20px;
+    font-size: 2rem;
+    padding: 1rem 2rem;
 }
 
 .note {
-    font-size: 14px;
+    font-size: 1.4rem;
     display: block;
     color: var(--grey-3);
 }
 
 .form input {
     display: block;
-    width: 240px;
-    height: 48px;
+    width: 24rem;
+    height: 5rem;
     font-weight: bold;
-    margin: 10px auto;
+    margin: 1rem auto;
     border-radius: 3px;
-    font-size: 24px;
+    font-size: 2.4rem;
     text-align: center;
     border: 2px solid var(--grey-2);
     background-color: var(--grey-1);
@@ -194,7 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .withdrawn:focus,
 .monthly-payment:focus {
-    box-shadow: 0 1px 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 2rem rgba(0, 0, 0, .1);
 }
 
 input.submit {
@@ -210,18 +212,18 @@ input.submit {
 input.submit:hover {
     color: var(--grey-1);
     background-color: #ff6564;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
 }
 
 .note,
 .note,
 .terms-label {
-    font-size: 16px;
+    font-size: 1.6rem;
     display: inline-block;
     text-decoration: none;
     color: var(--grey-3);
-    padding: 2px 10px;
-    margin-top: 5px;
+    padding: 2px 1rem;
+    margin-top: .5rem;
     transition: all .2s ease-out;
 }
 
@@ -233,7 +235,7 @@ input.submit:hover {
 .terms {
     text-align: right;
     color: var(--grey-3);
-    line-height: 36px;
+    line-height: 3.6rem;
     margin: 0 5%;
     max-height: 0;
     opacity: 0;
@@ -252,13 +254,13 @@ input.submit:hover {
 .terms li::before {
     content: '•';
     color: var(--scnd);
-    font-size: 36px;
+    font-size: 3.6rem;
     position: absolute;
-    right: -20px;
+    right: -2rem;
 }
 
 .terms span {
-    font-size: 21px;
+    font-size: 2.25rem;
 }
 
 .terms .number:last-child {
@@ -271,10 +273,10 @@ input.submit:hover {
 
 #terms:checked + .terms-label {
     border-top: 1px solid var(--grey-2);
-    font-size: 36px;
+    font-size: 3.6rem;
     display: block;
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: 3rem;
+    padding-top: 2rem;
     color: var(--scnd);
 }
 
@@ -286,15 +288,15 @@ input.submit:hover {
 .disclaimer {
     text-align: center;
     border-top: 1px solid var(--grey-2);
-    padding-top: 20px;
-    margin-top: 30px;
+    padding-top: 2rem;
+    margin-top: 3rem;
 }
 
 /* ================================================================================== */
 
 .result p {
-    margin: 25px 50px;
-    font-size: 20px;
+    margin: 2.5rem 5rem;
+    font-size: 2.25rem;
     color: var(--grey-3);
 }
 
@@ -332,6 +334,9 @@ input.submit:hover {
 /* ================================================================================== */
 
 @media screen and (max-width: 414px) {
+    html {
+        font-size: 50%;
+    }
     .center.container {
         position: relative;
         top: auto;
@@ -348,8 +353,8 @@ input.submit:hover {
         float: none;
         width: 80%;
         border: none;
-        margin: 20px auto;
-        padding-bottom: 20px;
+        margin: 2rem auto;
+        padding-bottom: 2rem;
     }
 
     .form fieldset:first-child {
