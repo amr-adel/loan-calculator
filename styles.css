@@ -165,7 +165,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .form input {
     display: block;
-    width: 24rem;
+    width: 80%;
+    max-width: 24rem;
     height: 5rem;
     font-weight: bold;
     margin: 1rem auto;
@@ -307,24 +308,23 @@ input.submit:hover {
 /* ================================================================================== */
 
 .footer__follow {
-    text-align: center;
-    cursor: default;
-    margin-top: 20px;
+    margin-top: 2rem;
+    direction: ltr;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .footer__follow a {
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    font-size: 20px;
+    width: 2rem;
     fill: var(--grey-1);
-    margin: 7px;
+    margin: 1rem;
     transition: fill .2s ease-out;
 }
 
 .footer__follow a:last-child {
-    width: 24px;
-    margin-left: 2px;
+    width: 2.5rem;
 }
 
 .footer__follow a:hover {
@@ -333,10 +333,11 @@ input.submit:hover {
 
 /* ================================================================================== */
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 700px) {
     html {
-        font-size: 50%;
+        font-size: 55%;
     }
+
     .center.container {
         position: relative;
         top: auto;
@@ -345,8 +346,9 @@ input.submit:hover {
     }
 
     .container {
-        margin: 5vw;
+        margin: 5vw auto;
         width: 90vw;
+        max-width: 50rem;
     }
 
     .form fieldset {
@@ -362,4 +364,14 @@ input.submit:hover {
         border-bottom: 2px solid var(--grey-2);
     }
 
+}
+
+@media screen and (max-width: 414px) {
+    html {
+        font-size: 50%;
+    }
+
+    .container {
+        margin: 5vw;
+    }
 }
