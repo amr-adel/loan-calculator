@@ -1,0 +1,22 @@
+{
+  "name": "loan-calculator",
+  "version": "1.0.0",
+  "description": "Simple Loan Calculator",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amr-adel/loan-calculator.git"
+  },
+  "author": "Fullstack Amr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amr-adel/loan-calculator/issues"
+  },
+  "homepage": "https://github.com/amr-adel/loan-calculator#readme",
+  "devDependencies": {
+    "sass": "^1.22.4"
+  }
+}
