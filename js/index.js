@@ -1,23 +1,41 @@
-import Form from './models/Form'
-import { DOM } from './views'
+import Form from "./models/Form";
+import {
+  getTransactionValue,
+  getInstallmentValue,
+  render
+} from "./views/formView";
+import { DOM } from "./views";
 
 // Global state
-const state = {
-    transaction: null,
-    debt: null,
-    installment: null,
-    minInstallment: null,
-    lastInstallment: null,
-    period: null,
-}
+const state = {};
 
 // Form Controller
 const controlForm = () => {
+  if (!state.form) state.form = new Form();
 
-}
+  state.form.transaction = +getTransactionValue();
+  state.form.minInstallment = state.form.calcMinInstallment();
+
+  const installmentInputValue = +getInstallmentValue();
+
+  state.form.installment =
+    installmentInputValue === "" ||
+    installmentInputValue < state.form.minInstallment
+      ? state.form.minInstallment
+      : installmentInputValue;
+
+  const { transaction, installment, minInstallment } = state.form;
+
+  render(transaction, installment, minInstallment);
+};
 
 // Event listeners
-DOM.transaction.addEventListener('change', (e) => {
-    state.transaction = e.target.value
-    console.log(state.transaction)
-})
+DOM.transactionInput.addEventListener("change", () => {
+  controlForm();
+});
+
+DOM.form.addEventListener("submit", e => {
+  e.preventDefault();
+  controlForm();
+  console.log(state);
+});

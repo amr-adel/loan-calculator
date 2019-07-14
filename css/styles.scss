@@ -177,26 +177,26 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: var(--grey-1);
 }
 
-.withdrawn:placeholder-shown,
-.monthly-payment:placeholder-shown {
+.transaction-input:placeholder-shown,
+.installment-input:placeholder-shown {
     border: 2px solid var(--grey-2) !important;
 }
 
-.withdrawn:valid,
-.monthly-payment:valid {
+.transaction-input:valid,
+.installment-input:valid {
     border: 2px solid var(--green);
     color: var(--green);
 }
 
-.withdrawn:invalid,
-.monthly-payment:invalid {
+.transaction-input:invalid,
+.installment-input:invalid {
     border: 2px solid var(--red);
     outline: none;
     color: var(--red);
 }
 
-.withdrawn:focus,
-.monthly-payment:focus {
+.transaction-input:focus,
+.installment-input:focus {
     box-shadow: 0 1px 2rem rgba(0, 0, 0, .1);
 }
 

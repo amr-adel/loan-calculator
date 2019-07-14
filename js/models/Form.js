@@ -1,9 +1,8 @@
 export default class Form {
+  calcMinInstallment() {
+    const minInstallmentPercentage = 5 / 100;
+    const minInstallment = this.transaction * minInstallmentPercentage;
 
-    calcMinInstallment(transaction) {
-        const minInstallmentPercentage = 5 / 100
-        const minInstallment = transaction * minInstallmentPercentage
-
-        return Math.ceil(minInstallment / 10) * 10
-    }
+    return Math.ceil(minInstallment / 10) * 10;
+  }
 }
