@@ -4,6 +4,7 @@ import {
   getInstallmentValue,
   render
 } from "./views/formView";
+import Result from "./models/Result";
 import { DOM } from "./views";
 
 // Global state
@@ -29,6 +30,14 @@ const controlForm = () => {
   render(transaction, installment, minInstallment);
 };
 
+// Result controller
+const controlResult = () => {
+  state.result = new Result(state.form.transaction, state.form.installment);
+
+  state.result.calculate();
+  console.log(state);
+};
+
 // Event listeners
 DOM.transactionInput.addEventListener("change", () => {
   controlForm();
@@ -37,5 +46,5 @@ DOM.transactionInput.addEventListener("change", () => {
 DOM.form.addEventListener("submit", e => {
   e.preventDefault();
   controlForm();
-  console.log(state);
+  controlResult();
 });
