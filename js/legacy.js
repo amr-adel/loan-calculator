@@ -1,5 +1,5 @@
 const dom = {
-    transaction: document.getElementById("withdrawn"),
+    transaction: document.getElementById("transaction"),
     installment: document.getElementById("monthly-payment"),
     form: document.getElementById("form"),
     resultPeriod: document.getElementById("period"),
@@ -52,12 +52,12 @@ const view = {
             dom.body.classList.remove('initial', 'center');
             view.result = true;
         });
-        dom.terms.addEventListener('change', function () {
-            console.log(view.result);
-            if (!view.result) {
-                dom.terms.checked ? dom.body.classList.remove("center") : dom.body.classList.add("center");
-            }
-        });
+        // dom.terms.addEventListener('change', function () {
+        //     console.log(view.result);
+        //     if (!view.result) {
+        //         dom.terms.checked ? dom.body.classList.remove("center") : dom.body.classList.add("center");
+        //     }
+        // });
     },
     result: false,
     render: function (result) {
