@@ -10,7 +10,7 @@ export const getInstallmentValue = () => {
   return installmentValue;
 };
 
-export const render = (transaction, installment, minInstallment) => {
+export const renderForm = (transaction, installment, minInstallment) => {
   DOM.installmentInput.value = installment;
   DOM.installmentInput.setAttribute("min", minInstallment);
   DOM.installmentInput.setAttribute("max", transaction / 2);

@@ -2,9 +2,10 @@ import Form from "./models/Form";
 import {
   getTransactionValue,
   getInstallmentValue,
-  render
+  renderForm
 } from "./views/formView";
 import Result from "./models/Result";
+import { renderResult } from "./views/resultView";
 import { DOM } from "./views";
 
 // Global state
@@ -27,7 +28,7 @@ const controlForm = () => {
 
   const { transaction, installment, minInstallment } = state.form;
 
-  render(transaction, installment, minInstallment);
+  renderForm(transaction, installment, minInstallment);
 };
 
 // Result controller
@@ -35,7 +36,12 @@ const controlResult = () => {
   state.result = new Result(state.form.transaction, state.form.installment);
 
   state.result.calculate();
-  console.log(state);
+  renderResult(
+    state.result.transaction,
+    state.result.installment,
+    state.result.lastInstallment,
+    state.result.numberOfInstallments
+  );
 };
 
 // Event listeners
