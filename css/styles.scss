@@ -509,6 +509,10 @@ input.submit:hover {
     width: 80vw;
     flex-direction: column;
 
+    & .description {
+      overflow-y: unset;
+    }
+
     & > div {
       margin: 1rem 0;
     }
