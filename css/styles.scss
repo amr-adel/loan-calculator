@@ -28,6 +28,7 @@
 *::after {
   box-sizing: inherit;
 }
+
 ul,
 li {
   list-style: none;
@@ -153,6 +154,8 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 3.6rem;
 }
 
+// FORM -------------------------------------------------------------------------------
+
 .form {
   margin: 3% 5%;
 }
@@ -234,24 +237,14 @@ input.submit:hover {
   box-shadow: var(--shadow);
 }
 
-.note {
-  font-size: 1.6rem;
-  display: inline-block;
-  text-decoration: none;
-  color: var(--grey-3);
-  padding: 2px 1rem;
-  margin-top: 0.5rem;
-}
-
 .disclaimer {
-  text-align: center;
   border-top: 1px solid var(--grey-2);
   border-bottom: 1px solid var(--grey-2);
   padding: 2rem 0;
   margin: 3rem 0;
 }
 
-/* ================================================================================== */
+// RESULT -------------------------------------------------------------------------------
 
 .result p {
   margin: 2.5rem 5rem;
@@ -263,7 +256,7 @@ input.submit:hover {
   display: none;
 }
 
-/* Modal ====================================================== */
+// MODAL -------------------------------------------------------------------------------
 
 .modal {
   &__toggle-input {
@@ -479,7 +472,7 @@ input.submit:hover {
   }
 }
 
-/* ================================================================================== */
+// MEDIA QUERIES -------------------------------------------------------------------------------
 
 @media screen and (max-width: 850px) {
   html {
@@ -514,6 +507,12 @@ input.submit:hover {
 
   .modal__content-wrapper {
     width: 80vw;
+    flex-direction: column;
+
+    & > div {
+      margin: 1rem 0;
+    }
+
   }
 }
 
@@ -532,12 +531,10 @@ input.submit:hover {
 
   .modal__content-wrapper {
     width: 90vw;
-    flex-direction: column;
     padding: 2rem;
 
     & > div {
       padding: 2rem;
-      margin: 1rem 0;
     }
 
     & .about__social-icons svg {
