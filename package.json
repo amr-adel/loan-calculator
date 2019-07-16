@@ -4,6 +4,8 @@
   "description": "Simple Loan Calculator",
   "main": "index.html",
   "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --public-url ./",
     "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "repository": {
