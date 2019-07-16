@@ -29,4 +29,10 @@ export const renderResult = (
   changeInnerHTML("resultTotalInterest", totalInterest);
   changeInnerHTML("resultOver", overPay);
   changeInnerHTML("resultTotalPayment", totalPayment);
+
+  const resultRect = DOM.result.getBoundingClientRect();
+  window.scrollTo({
+    top: resultRect.y,
+    behavior: "smooth"
+  });
 };
