@@ -20,6 +20,8 @@
   "homepage": "https://github.com/amr-adel/loan-calculator#readme",
   "devDependencies": {
     "cssnano": "^4.1.10",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-sw-precache": "^1.1.1",
     "sass": "^1.22.4"
   },
   "dependencies": {

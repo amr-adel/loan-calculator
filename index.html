@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="./manifest.webmanifest" />
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|Tajawal&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.scss" />
     <title>أحسبها لك؟</title>
@@ -186,5 +186,19 @@
       </section>
     </aside>
     <script src="./js/index.js"></script>
+    <script>
+      // serviceWorker
+      if ('serviceWorker' in navigator) {
+        const x = './service-worker.js'
+        navigator.serviceWorker
+          .register(x)
+          .then(function(registration) {
+            console.log('Registration successful, scope is:', registration.scope)
+          })
+          .catch(function(error) {
+            console.log('Service worker registration failed, error:', error)
+          })
+      }
+    </script>
   </body>
 </html>
