@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html --public-url ./",
-    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
+    "sw": "workbox injectManifest",
+    "publish": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,6 @@
   "homepage": "https://github.com/amr-adel/loan-calculator#readme",
   "devDependencies": {
     "cssnano": "^4.1.10",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-sw-precache": "^1.1.1",
     "sass": "^1.22.4"
   },
   "dependencies": {
