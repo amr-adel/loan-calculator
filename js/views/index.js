@@ -10,5 +10,7 @@ export const DOM = {
   resultLastInstallment: document.getElementById("last-installment"),
   resultTotalInterest: document.getElementById("total-interest"),
   resultOver: document.getElementById("difference"),
-  resultTotalPayment: document.getElementById("total-payment")
+  resultTotalPayment: document.getElementById("total-payment"),
+  modalInput: document.getElementById("modal-toggle-input"),
+  modalBG: document.querySelector(".modal__container")
 };

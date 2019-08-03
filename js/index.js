@@ -49,3 +49,9 @@ DOM.form.addEventListener('submit', e => {
   controlForm()
   controlResult()
 })
+
+DOM.modalBG.addEventListener('click', () => {
+  if (event.target.className === 'modal__container') {
+    DOM.modalInput.click()
+  }
+})
