@@ -1,8 +1,8 @@
 import Form from './models/Form'
 import { getTransactionValue, getInstallmentValue, renderForm } from './views/formView'
 import Result from './models/Result'
-import { renderResult } from './views/resultView'
-import { DOM } from './views'
+import renderResult from './views/resultView'
+import DOM from './views'
 
 // Global state
 const state = {}
@@ -50,7 +50,7 @@ DOM.form.addEventListener('submit', e => {
   controlResult()
 })
 
-DOM.modalBG.addEventListener('click', () => {
+DOM.modalBG.addEventListener('click', event => {
   if (event.target.className === 'modal__container') {
     DOM.modalInput.click()
   }
